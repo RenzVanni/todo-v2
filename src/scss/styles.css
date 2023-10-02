@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap");
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.125rem;
+}
+
+:root {
+  --primary-c1: hsl(220, 98%, 61%);
+  --primary-bg1: hsl(192, 100%, 67%);
+  --primary-bg2: hsl(280, 87%, 65%);
+  --light-c1: hsl(0, 0%, 98%);
+  --light-c2: hsl(236, 33%, 92%);
+  --light-c3: hsl(233, 11%, 84%);
+  --light-c4: hsl(236, 9%, 61%);
+  --light-c5: hsl(235, 19%, 35%);
+  --dark-c1: hsl(235, 21%, 11%);
+  --dark-c2: hsl(235, 24%, 19%);
+  --dark-c3: hsl(234, 39%, 85%);
+  --dark-hover: hsl(236, 33%, 92%);
+  --dark-c5: hsl(234, 11%, 52%);
+  --dark-c6: hsl(233, 14%, 35%);
+  --dark-c7: hsl(237, 14%, 26%);
+}/*# sourceMappingURL=styles.css.map */
