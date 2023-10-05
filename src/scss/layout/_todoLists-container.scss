@@ -1,0 +1,63 @@
+.todoLists-container {
+  background-color: var(--light-c5);
+  max-height: 350px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+
+  .container-1 {
+    padding: 1rem;
+    background-color: var(--light-c1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--light-c3);
+    .checkbox-container {
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid var(--light-c4);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      input[type="checkbox"]:checked + label {
+        background-image: url("../../../public/images/icon-check.svg"),
+          linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+        border: none;
+      }
+    }
+
+    .img-container {
+      width: 15px;
+
+      img {
+        width: inherit;
+      }
+    }
+  }
+  .container-2 {
+    background-color: var(--light-c1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+
+    .footer-1 {
+      display: flex;
+      gap: 0.8rem;
+    }
+  }
+
+  @media (min-width: 375px) {
+    width: 500px;
+    max-height: 450px;
+  }
+}

@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    color: var(--light-c1);
+  }
+
+  .img-container {
+    width: 20px;
+
+    img {
+      width: inherit;
+    }
+  }
+
+  @media (min-width: 375px) {
+    width: 500px;
+  }
+}

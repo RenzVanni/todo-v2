@@ -1,0 +1,40 @@
+.createTodo-container {
+  margin-top: 2rem;
+  form {
+    background-color: var(--light-c1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    label {
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      border: 1px solid var(--light-c4);
+      margin: 0 0 0 1rem;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    input[type="checkbox"]:checked + label {
+      background-image: url("../../../public/images/icon-check.svg"),
+        linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+      border: none;
+    }
+
+    input[type="text"] {
+      border: none;
+      padding: 1rem;
+      width: 100%;
+      outline: none;
+    }
+  }
+
+  @media (min-width: 375px) {
+    width: 500px;
+  }
+}
