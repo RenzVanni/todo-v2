@@ -23,7 +23,9 @@ const TodoLists = () => {
       })}
       {todo.length > 0 ? (
         <div className="container-2">
-          <p>5 items left</p>
+          <p>
+            {todo.length} item{todo.length > 1 ? <span>s</span> : null} left
+          </p>
 
           <div className="footer-1">
             <p>Clear</p>
