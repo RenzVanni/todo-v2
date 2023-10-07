@@ -1,36 +1,58 @@
 import { useAppSelector } from "../Selector";
+import { useAppDispatch } from "../Dispatch";
+import {
+  deleteTodo,
+  clearTodo,
+  isActive,
+  isNotActive,
+  showAll,
+  changeStatus,
+} from "../feature/todoSlice";
+import { useState } from "react";
 
 const TodoLists = () => {
   const todo = useAppSelector((state) => state.todo.todo);
-  console.log(todo);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="todoLists-container">
       {todo.map((todoLists) => {
         return (
           <div className="container-1" key={todoLists.id}>
-            <div className="checkbox-container">
-              <input type="checkbox" name="" id="forCheckbox" />
-              <label htmlFor="forCheckbox"></label>
+            <input
+              type="checkbox"
+              name=""
+              id={todoLists.id.toString()}
+              onClick={() => {
+                dispatch(changeStatus({ id: todoLists.id }));
+              }}
+            />
+            <label htmlFor={todoLists.id.toString()}></label>
+
+            <div className="text-container">
+              <p>{todoLists.text}</p>
             </div>
 
-            <p>{todoLists.text}</p>
-
             <div className="img-container">
-              <img src="../../public/images/icon-cross.svg" alt="" />
+              <img
+                src="../../public/images/icon-cross.svg"
+                alt=""
+                onClick={() => dispatch(deleteTodo({ id: todoLists.id }))}
+              />
             </div>
           </div>
         );
       })}
-      {todo.length > 0 ? (
+      {todo.length > 1 ? (
         <div className="container-2">
-          <p>
-            {todo.length} item{todo.length > 1 ? <span>s</span> : null} left
-          </p>
+          <p>{todo.length} items left</p>
 
-          <div className="footer-1">
-            <p>Clear</p>
-            <p>Completed</p>
+          <div className="middle">
+            <p onClick={() => dispatch(showAll())}>All</p>
+            <p onClick={() => dispatch(isActive())}>Active</p>
+            <p onClick={() => dispatch(isNotActive())}>Completed</p>
           </div>
+          <p onClick={() => dispatch(clearTodo())}>Clear Completed</p>
         </div>
       ) : null}
     </div>

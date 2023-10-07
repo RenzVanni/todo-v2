@@ -1,5 +1,7 @@
 .createTodo-container {
   margin-top: 2rem;
+  min-width: 300px;
+  width: clamp(300px, 80%, 500px);
   form {
     background-color: var(--light-c1);
     border-radius: 0.5rem;
@@ -35,6 +37,5 @@
   }
 
   @media (min-width: 375px) {
-    width: 500px;
   }
 }

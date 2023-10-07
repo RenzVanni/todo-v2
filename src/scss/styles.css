@@ -38,6 +38,7 @@ body {
 .todo-container {
   position: relative;
   height: 100vh;
+  min-width: 300px;
   background-color: var(--light-c2);
   padding: 3rem 1.5rem;
   background-image: url("../../../public/images/bg-mobile-light.jpg");
@@ -58,7 +59,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: clamp(300px, 80%, 500px);
 }
 .header h1 {
   font-size: 1.5rem;
@@ -71,14 +72,10 @@ body {
 .header .img-container img {
   width: inherit;
 }
-@media (min-width: 375px) {
-  .header {
-    width: 500px;
-  }
-}
-
 .createTodo-container {
   margin-top: 2rem;
+  min-width: 300px;
+  width: clamp(300px, 80%, 500px);
 }
 .createTodo-container form {
   background-color: var(--light-c1);
@@ -109,15 +106,10 @@ body {
   width: 100%;
   outline: none;
 }
-@media (min-width: 375px) {
-  .createTodo-container {
-    width: 500px;
-  }
-}
-
 .todoLists-container {
   background-color: var(--light-c5);
   max-height: 350px;
+  width: clamp(300px, 80%, 500px);
   border-radius: 0.5rem;
   overflow: hidden;
   margin-top: 1rem;
@@ -128,13 +120,18 @@ body {
   background-color: var(--light-c1);
   display: flex;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
   border-bottom: 1px solid var(--light-c3);
 }
-.todoLists-container .container-1 .checkbox-container input[type=checkbox] {
+.todoLists-container .container-1 input[type=checkbox] {
   display: none;
 }
-.todoLists-container .container-1 .checkbox-container label {
+.todoLists-container .container-1 input[type=checkbox]:checked ~ .text-container > p {
+  text-decoration: line-through;
+  color: var(--light-c4);
+}
+.todoLists-container .container-1 label {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -143,15 +140,23 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.todoLists-container .container-1 .checkbox-container input[type=checkbox]:checked + label {
+.todoLists-container .container-1 input[type=checkbox]:checked + label {
   background-image: url("../../../public/images/icon-check.svg"), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border: none;
 }
+.todoLists-container .container-1 .text-container {
+  width: 100%;
+}
 .todoLists-container .container-1 .img-container {
+  display: none;
   width: 15px;
 }
 .todoLists-container .container-1 .img-container img {
   width: inherit;
+}
+.todoLists-container .container-1:hover .img-container {
+  cursor: pointer;
+  display: block;
 }
 .todoLists-container .container-2 {
   background-color: var(--light-c1);
@@ -160,13 +165,37 @@ body {
   justify-content: space-between;
   padding: 1rem;
 }
-.todoLists-container .container-2 .footer-1 {
-  display: flex;
-  gap: 0.8rem;
+.todoLists-container .container-2 .middle {
+  display: none;
+  gap: 1rem;
 }
 @media (min-width: 375px) {
   .todoLists-container {
-    width: 500px;
     max-height: 450px;
+  }
+  .todoLists-container .container-2 .middle {
+    display: flex;
+  }
+}
+
+.footer {
+  background-color: var(--light-c1);
+  border-radius: 0.5rem;
+  color: var(--light-c4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  width: clamp(300px, 80%, 500px);
+}
+.footer :nth-child(1) {
+  color: var(--primary-c1);
+}
+@media (min-width: 375px) {
+  .footer {
+    display: none;
   }
 }/*# sourceMappingURL=styles.css.map */

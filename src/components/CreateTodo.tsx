@@ -11,8 +11,9 @@ const CreateTodo = () => {
   const onAddTodo = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let todoLength = todoList.length;
-    dispatch(addTodo({ id: todoLength, text: inputText }));
+    dispatch(addTodo({ id: todoLength, text: inputText, status: "active" }));
     todoLength += 1;
+    setInputText("");
   };
 
   return (
@@ -24,6 +25,7 @@ const CreateTodo = () => {
           type="text"
           placeholder="Create a new task..."
           onChange={(e) => setInputText(e.target.value)}
+          value={inputText}
         />
       </form>
     </div>

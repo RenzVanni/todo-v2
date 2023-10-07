@@ -1,6 +1,7 @@
 .todo-container {
   position: relative;
   height: 100vh;
+  min-width: 300px;
   background-color: var(--light-c2);
   padding: 3rem 1.5rem;
   background-image: url("../../../public/images/bg-mobile-light.jpg");
