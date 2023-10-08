@@ -1,7 +1,7 @@
 .createTodo-container {
   margin-top: 2rem;
   min-width: 300px;
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 100%, 500px);
   form {
     background-color: var(--light-c1);
     border-radius: 0.5rem;
@@ -37,5 +37,35 @@
   }
 
   @media (min-width: 375px) {
+  }
+}
+
+.create-dark {
+  form {
+    background-color: var(--dark-c2);
+
+    label {
+      border-color: var(--dark-c6);
+    }
+    input {
+      background-color: var(--dark-c2);
+      color: var(--dark-c3);
+    }
+  }
+}
+
+@media (min-width: 375px) {
+  .create-dark {
+    form {
+      background-color: var(--dark-c2);
+
+      label {
+        border-color: var(--dark-c6);
+      }
+      input {
+        background-color: var(--dark-c2);
+        color: var(--dark-c3);
+      }
+    }
   }
 }

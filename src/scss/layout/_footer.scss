@@ -9,7 +9,7 @@
   gap: 1rem;
   padding: 1rem;
   margin-top: 1rem;
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 100%, 500px);
 
   :nth-child(1) {
     color: var(--primary-c1);
@@ -18,4 +18,9 @@
   @media (min-width: 375px) {
     display: none;
   }
+}
+
+.footer-dark {
+  background-color: var(--dark-c2);
+  color: var(--dark-c5);
 }

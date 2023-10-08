@@ -16,8 +16,11 @@ const CreateTodo = () => {
     setInputText("");
   };
 
+  const theme = useAppSelector((state) => state.theme.theme);
+  const createDark = theme.status === false ? "create-dark" : "";
+
   return (
-    <div className="createTodo-container">
+    <div className={`createTodo-container ${createDark}`}>
       <form action="" onSubmit={onAddTodo}>
         <input type="checkbox" name="" id="checkboxLabel" />
         <label htmlFor="checkboxLabel"></label>

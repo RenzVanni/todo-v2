@@ -17,3 +17,12 @@
     align-items: center;
   }
 }
+.bg-image-dark {
+  background-image: url("../../../public/images/bg-mobile-dark.jpg");
+  background-color: var(--dark-c1);
+}
+@media (min-width: 375px) {
+  .bg-image-dark {
+    background-image: url("../../../public/images/bg-desktop-dark.jpg");
+  }
+}

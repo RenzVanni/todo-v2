@@ -14,8 +14,11 @@ const TodoLists = () => {
   const todo = useAppSelector((state) => state.todo.todo);
   const dispatch = useAppDispatch();
 
+  const theme = useAppSelector((state) => state.theme.theme);
+  const listDark = theme.status === false ? "list-dark" : "";
+
   return (
-    <div className="todoLists-container">
+    <div className={`todoLists-container ${listDark}`}>
       {todo.map((todoLists) => {
         return (
           <div className="container-1" key={todoLists.id}>

@@ -1,7 +1,7 @@
 .todoLists-container {
   background-color: var(--light-c5);
   max-height: 350px;
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 100%, 500px);
   border-radius: 0.5rem;
   overflow: hidden;
   margin-top: 1rem;
@@ -80,5 +80,29 @@
         display: flex;
       }
     }
+  }
+}
+
+.list-dark {
+  .container-1 {
+    background-color: var(--dark-c2);
+    border-bottom-color: var(--dark-c6);
+
+    input[type="checkbox"]:checked ~ .text-container > p {
+      text-decoration: line-through;
+      color: var(--dark-c6);
+    }
+    label {
+      border-color: var(--dark-c6);
+    }
+
+    .text-container {
+      color: var(--dark-c3);
+    }
+  }
+
+  .container-2 {
+    background-color: var(--dark-c2);
+    color: var(--dark-c5);
   }
 }

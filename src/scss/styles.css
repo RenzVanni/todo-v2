@@ -55,11 +55,21 @@ body {
   }
 }
 
+.bg-image-dark {
+  background-image: url("../../../public/images/bg-mobile-dark.jpg");
+  background-color: var(--dark-c1);
+}
+
+@media (min-width: 375px) {
+  .bg-image-dark {
+    background-image: url("../../../public/images/bg-desktop-dark.jpg");
+  }
+}
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 100%, 500px);
 }
 .header h1 {
   font-size: 1.5rem;
@@ -75,7 +85,7 @@ body {
 .createTodo-container {
   margin-top: 2rem;
   min-width: 300px;
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 100%, 500px);
 }
 .createTodo-container form {
   background-color: var(--light-c1);
@@ -106,10 +116,33 @@ body {
   width: 100%;
   outline: none;
 }
+.create-dark form {
+  background-color: var(--dark-c2);
+}
+.create-dark form label {
+  border-color: var(--dark-c6);
+}
+.create-dark form input {
+  background-color: var(--dark-c2);
+  color: var(--dark-c3);
+}
+
+@media (min-width: 375px) {
+  .create-dark form {
+    background-color: var(--dark-c2);
+  }
+  .create-dark form label {
+    border-color: var(--dark-c6);
+  }
+  .create-dark form input {
+    background-color: var(--dark-c2);
+    color: var(--dark-c3);
+  }
+}
 .todoLists-container {
   background-color: var(--light-c5);
   max-height: 350px;
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 100%, 500px);
   border-radius: 0.5rem;
   overflow: hidden;
   margin-top: 1rem;
@@ -178,6 +211,25 @@ body {
   }
 }
 
+.list-dark .container-1 {
+  background-color: var(--dark-c2);
+  border-bottom-color: var(--dark-c6);
+}
+.list-dark .container-1 input[type=checkbox]:checked ~ .text-container > p {
+  text-decoration: line-through;
+  color: var(--dark-c6);
+}
+.list-dark .container-1 label {
+  border-color: var(--dark-c6);
+}
+.list-dark .container-1 .text-container {
+  color: var(--dark-c3);
+}
+.list-dark .container-2 {
+  background-color: var(--dark-c2);
+  color: var(--dark-c5);
+}
+
 .footer {
   background-color: var(--light-c1);
   border-radius: 0.5rem;
@@ -189,7 +241,7 @@ body {
   gap: 1rem;
   padding: 1rem;
   margin-top: 1rem;
-  width: clamp(300px, 80%, 500px);
+  width: clamp(300px, 100%, 500px);
 }
 .footer :nth-child(1) {
   color: var(--primary-c1);
@@ -198,4 +250,9 @@ body {
   .footer {
     display: none;
   }
+}
+
+.footer-dark {
+  background-color: var(--dark-c2);
+  color: var(--dark-c5);
 }/*# sourceMappingURL=styles.css.map */
