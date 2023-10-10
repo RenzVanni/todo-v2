@@ -7,30 +7,45 @@ import {
   isNotActive,
   showAll,
   changeStatus,
+  fetchTodos,
 } from "../feature/todoSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TodoLists = () => {
-  const todo = useAppSelector((state) => state.todo.todo);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
+
+  const todo = useAppSelector((state) => state.todo.todo) || [];
+  const isLoading = useAppSelector((state) => state.todo.isLoading);
 
   const theme = useAppSelector((state) => state.theme.theme);
   const listDark = theme.status === false ? "list-dark" : "";
+
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <div className={`todoLists-container ${listDark}`}>
       {todo.map((todoLists) => {
         return (
-          <div className="container-1" key={todoLists.id}>
+          <div className="container-1" key={todoLists._id}>
             <input
               type="checkbox"
               name=""
-              id={todoLists.id.toString()}
+              id={todoLists._id}
               onClick={() => {
-                dispatch(changeStatus({ id: todoLists.id }));
+                dispatch(changeStatus({ id: String(todoLists._id) }));
               }}
             />
-            <label htmlFor={todoLists.id.toString()}></label>
+            <label htmlFor={todoLists._id}></label>
 
             <div className="text-container">
               <p>{todoLists.text}</p>
@@ -40,7 +55,9 @@ const TodoLists = () => {
               <img
                 src="../../public/images/icon-cross.svg"
                 alt=""
-                onClick={() => dispatch(deleteTodo({ id: todoLists.id }))}
+                onClick={() =>
+                  dispatch(deleteTodo({ id: String(todoLists._id) }))
+                }
               />
             </div>
           </div>
