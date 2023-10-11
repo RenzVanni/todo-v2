@@ -15,10 +15,35 @@ export const addTodoAsync = createAsyncThunk(
   "todos/addTodoAsync",
   async ({ _id, text, status }: Todo) => {
     try {
-      await axios.post("http://localhost:3000", {
+      const response = await axios.post("http://localhost:3000", {
         text,
         status,
       });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const deleteTodoAsync = createAsyncThunk(
+  "todos/deleteTodoAsync",
+  async ({ id }: { id: string }) => {
+    try {
+      const deletedTodo = await axios.delete(`http://localhost:3000/${id}`);
+      return id;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const clearTodoAsync = createAsyncThunk(
+  "todos/clearTodoAsync",
+  async () => {
+    try {
+      const response = await axios.delete("http://localhost:3000");
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -105,9 +130,31 @@ const todoSlice = createSlice({
       .addCase(addTodoAsync.fulfilled, (state, action) => {
         console.log("fullfilled state");
         state.isLoading = false;
+        state.todo.push(action.payload);
       })
       .addCase(addTodoAsync.rejected, (state) => {
         console.log("rejected");
+      })
+      .addCase(deleteTodoAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteTodoAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const deleteId = action.payload;
+        state.todo = state.todo.filter((todo) => todo._id !== deleteId);
+      })
+      .addCase(deleteTodoAsync.rejected, (state) => {
+        console.log("delete todo rejected");
+      })
+      .addCase(clearTodoAsync.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(clearTodoAsync.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.todo = [];
+      })
+      .addCase(clearTodoAsync.rejected, (state) => {
+        console.log("delete todo rejected");
       });
   },
 });

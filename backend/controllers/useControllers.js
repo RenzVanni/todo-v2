@@ -21,4 +21,21 @@ const postTodos = async (req, res) => {
   res.json(addTodo);
 };
 
-module.exports = { getTodos, postTodos };
+const deleteTodo = async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+  if (!todo) {
+    res.status(404);
+    throw new Error("Todo not found");
+    return;
+  }
+
+  const deletedTodo = await Todo.findByIdAndDelete(req.params.id);
+  res.status(200).json(deletedTodo);
+};
+
+const clearTodo = async (req, res) => {
+  const clear = await Todo.deleteMany({});
+  res.status(200).json(clear);
+};
+
+module.exports = { getTodos, postTodos, deleteTodo, clearTodo };

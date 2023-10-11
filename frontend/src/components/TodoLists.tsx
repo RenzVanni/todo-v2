@@ -8,6 +8,8 @@ import {
   showAll,
   changeStatus,
   fetchTodos,
+  deleteTodoAsync,
+  clearTodoAsync,
 } from "../feature/todoSlice";
 import { useEffect, useState } from "react";
 
@@ -56,7 +58,7 @@ const TodoLists = () => {
                 src="../../public/images/icon-cross.svg"
                 alt=""
                 onClick={() =>
-                  dispatch(deleteTodo({ id: String(todoLists._id) }))
+                  dispatch(deleteTodoAsync({ id: String(todoLists._id) }))
                 }
               />
             </div>
@@ -72,7 +74,7 @@ const TodoLists = () => {
             <p onClick={() => dispatch(isActive())}>Active</p>
             <p onClick={() => dispatch(isNotActive())}>Completed</p>
           </div>
-          <p onClick={() => dispatch(clearTodo())}>Clear Completed</p>
+          <p onClick={() => dispatch(clearTodoAsync())}>Clear Completed</p>
         </div>
       ) : null}
     </div>
