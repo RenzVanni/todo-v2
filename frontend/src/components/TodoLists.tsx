@@ -8,6 +8,7 @@ import {
   showAll,
   changeStatus,
   fetchTodos,
+  putTodoAsync,
   deleteTodoAsync,
   clearTodoAsync,
 } from "../feature/todoSlice";
@@ -36,35 +37,38 @@ const TodoLists = () => {
 
   return (
     <div className={`todoLists-container ${listDark}`}>
-      {todo.map((todoLists) => {
-        return (
-          <div className="container-1" key={todoLists._id}>
-            <input
-              type="checkbox"
-              name=""
-              id={todoLists._id}
-              onClick={() => {
-                dispatch(changeStatus({ id: String(todoLists._id) }));
-              }}
-            />
-            <label htmlFor={todoLists._id}></label>
-
-            <div className="text-container">
-              <p>{todoLists.text}</p>
-            </div>
-
-            <div className="img-container">
-              <img
-                src="../../public/images/icon-cross.svg"
-                alt=""
-                onClick={() =>
-                  dispatch(deleteTodoAsync({ id: String(todoLists._id) }))
-                }
+      <div className="todolist-main-container">
+        {todo.map((todoLists) => {
+          return (
+            <div className="container-1" key={todoLists._id}>
+              <input
+                type="checkbox"
+                name=""
+                id={todoLists._id}
+                checked={todoLists.status === "completed"}  
+                onClick={() => {
+                  dispatch(putTodoAsync({ id: String(todoLists._id) }));
+                }}
               />
+              <label htmlFor={todoLists._id}></label>
+
+              <div className="text-container">
+                <p>{todoLists.text}</p>
+              </div>
+
+              <div className="img-container">
+                <img
+                  src="../../public/images/icon-cross.svg"
+                  alt=""
+                  onClick={() =>
+                    dispatch(deleteTodoAsync({ id: String(todoLists._id) }))
+                  }
+                />
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
       {todo.length > 1 ? (
         <div className="container-2">
           <p>{todo.length} items left</p>

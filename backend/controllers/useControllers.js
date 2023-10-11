@@ -21,6 +21,35 @@ const postTodos = async (req, res) => {
   res.json(addTodo);
 };
 
+const putTodo = async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+
+  if (!todo) {
+    res.status(404);
+    throw new Error("Todo not found");
+    return;
+  }
+  if (todo.status === "active") {
+    const updateTodo = await Todo.findByIdAndUpdate(
+      req.params.id,
+      { status: "completed" },
+      {
+        new: true,
+      }
+    );
+    res.status(200).json(updateTodo);
+    return;
+  }
+  const updateTodo = await Todo.findByIdAndUpdate(
+    req.params.id,
+    { status: "active" },
+    {
+      new: true,
+    }
+  );
+  res.status(200).json(updateTodo);
+  return;
+};
 const deleteTodo = async (req, res) => {
   const todo = await Todo.findById(req.params.id);
   if (!todo) {
@@ -38,4 +67,4 @@ const clearTodo = async (req, res) => {
   res.status(200).json(clear);
 };
 
-module.exports = { getTodos, postTodos, deleteTodo, clearTodo };
+module.exports = { getTodos, postTodos, putTodo, deleteTodo, clearTodo };

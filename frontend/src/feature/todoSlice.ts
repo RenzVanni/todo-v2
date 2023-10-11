@@ -26,11 +26,23 @@ export const addTodoAsync = createAsyncThunk(
   }
 );
 
+export const putTodoAsync = createAsyncThunk(
+  "todos/putTodoAsync",
+  async ({ id }: { id: string }) => {
+    try {
+      const response = await axios.put(`http://localhost:3000/${id}/`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const deleteTodoAsync = createAsyncThunk(
   "todos/deleteTodoAsync",
   async ({ id }: { id: string }) => {
     try {
-      const deletedTodo = await axios.delete(`http://localhost:3000/${id}`);
+      await axios.delete(`http://localhost:3000/${id}`);
       return id;
     } catch (error) {
       console.log(error);
@@ -133,6 +145,25 @@ const todoSlice = createSlice({
         state.todo.push(action.payload);
       })
       .addCase(addTodoAsync.rejected, (state) => {
+        console.log("rejected");
+      })
+      .addCase(putTodoAsync.pending, (state) => {
+        console.log("pending state");
+        state.isLoading = true;
+      })
+      .addCase(putTodoAsync.fulfilled, (state, action) => {
+        console.log("fullfilled state");
+        state.isLoading = false;
+        const newStatus = state.todo.find(
+          (todo) => todo._id === action.payload._id
+        );
+        if (newStatus) {
+          newStatus.status = action.payload.status;
+        } else {
+          throw new Error("Put Error");
+        }
+      })
+      .addCase(putTodoAsync.rejected, (state) => {
         console.log("rejected");
       })
       .addCase(deleteTodoAsync.pending, (state) => {

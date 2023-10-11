@@ -1,63 +1,67 @@
 .todoLists-container {
-  background-color: var(--light-c5);
-  max-height: 350px;
   width: clamp(300px, 100%, 500px);
   border-radius: 0.5rem;
   overflow: hidden;
   margin-top: 1rem;
   font-size: 0.8rem;
 
-  .container-1 {
-    padding: 1rem;
-    background-color: var(--light-c1);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--light-c3);
-    input[type="checkbox"] {
-      display: none;
-    }
+  .todolist-main-container {
+    max-height: 400px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+    .container-1 {
+      padding: 1rem;
+      background-color: var(--light-c1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--light-c3);
+      input[type="checkbox"] {
+        display: none;
+      }
 
-    // if checkbox is checked text decorate text-container
-    input[type="checkbox"]:checked ~ .text-container > p {
-      text-decoration: line-through;
-      color: var(--light-c4);
-    }
+      // if checkbox is checked text decorate text-container
+      input[type="checkbox"]:checked ~ .text-container > p {
+        text-decoration: line-through;
+        color: var(--light-c4);
+      }
 
-    label {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 1px solid var(--light-c4);
-      background-repeat: no-repeat;
-      background-position: center;
-    }
+      label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid var(--light-c4);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
 
-    input[type="checkbox"]:checked + label {
-      background-image: url("../../../public/images/icon-check.svg"),
-        linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-      border: none;
-    }
+      input[type="checkbox"]:checked + label {
+        background-image: url("../../../public/images/icon-check.svg"),
+          linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+        border: none;
+      }
 
-    .text-container {
-      width: 100%;
-    }
+      .text-container {
+        width: 100%;
+      }
 
-    .img-container {
-      display: none;
-      width: 15px;
+      .img-container {
+        display: none;
+        width: 15px;
 
-      img {
-        width: inherit;
+        img {
+          width: inherit;
+        }
       }
     }
-  }
 
-  .container-1:hover .img-container {
-    cursor: pointer;
-    display: block;
+    .container-1:hover .img-container {
+      cursor: pointer;
+      display: block;
+    }
   }
   .container-2 {
     background-color: var(--light-c1);

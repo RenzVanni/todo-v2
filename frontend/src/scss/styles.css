@@ -140,15 +140,19 @@ body {
   }
 }
 .todoLists-container {
-  background-color: var(--light-c5);
-  max-height: 350px;
   width: clamp(300px, 100%, 500px);
   border-radius: 0.5rem;
   overflow: hidden;
   margin-top: 1rem;
   font-size: 0.8rem;
 }
-.todoLists-container .container-1 {
+.todoLists-container .todolist-main-container {
+  max-height: 400px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+.todoLists-container .todolist-main-container .container-1 {
   padding: 1rem;
   background-color: var(--light-c1);
   display: flex;
@@ -157,14 +161,14 @@ body {
   justify-content: space-between;
   border-bottom: 1px solid var(--light-c3);
 }
-.todoLists-container .container-1 input[type=checkbox] {
+.todoLists-container .todolist-main-container .container-1 input[type=checkbox] {
   display: none;
 }
-.todoLists-container .container-1 input[type=checkbox]:checked ~ .text-container > p {
+.todoLists-container .todolist-main-container .container-1 input[type=checkbox]:checked ~ .text-container > p {
   text-decoration: line-through;
   color: var(--light-c4);
 }
-.todoLists-container .container-1 label {
+.todoLists-container .todolist-main-container .container-1 label {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -173,21 +177,21 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
-.todoLists-container .container-1 input[type=checkbox]:checked + label {
+.todoLists-container .todolist-main-container .container-1 input[type=checkbox]:checked + label {
   background-image: url("../../../public/images/icon-check.svg"), linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   border: none;
 }
-.todoLists-container .container-1 .text-container {
+.todoLists-container .todolist-main-container .container-1 .text-container {
   width: 100%;
 }
-.todoLists-container .container-1 .img-container {
+.todoLists-container .todolist-main-container .container-1 .img-container {
   display: none;
   width: 15px;
 }
-.todoLists-container .container-1 .img-container img {
+.todoLists-container .todolist-main-container .container-1 .img-container img {
   width: inherit;
 }
-.todoLists-container .container-1:hover .img-container {
+.todoLists-container .todolist-main-container .container-1:hover .img-container {
   cursor: pointer;
   display: block;
 }
