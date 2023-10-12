@@ -1,4 +1,5 @@
-import { addTodo, addTodoAsync } from "../feature/todoSlice";
+import { addTodo } from "../feature/todoSlice";
+import { addTodoAsync } from "../feature/todoThunks";
 import { useAppDispatch } from "../Dispatch";
 import { useAppSelector } from "../Selector";
 import { FormEvent, useState } from "react";

@@ -7,11 +7,13 @@ import {
   isNotActive,
   showAll,
   changeStatus,
+} from "../feature/todoSlice";
+import {
   fetchTodos,
   putTodoAsync,
   deleteTodoAsync,
   clearTodoAsync,
-} from "../feature/todoSlice";
+} from "../feature/todoThunks";
 import { useEffect, useState } from "react";
 
 const TodoLists = () => {
@@ -30,7 +32,7 @@ const TodoLists = () => {
   if (isLoading) {
     return (
       <div className="loading">
-        <h1>Loading...</h1>
+        <div className="spinner"></div>
       </div>
     );
   }
@@ -45,8 +47,8 @@ const TodoLists = () => {
                 type="checkbox"
                 name=""
                 id={todoLists._id}
-                checked={todoLists.status === "completed"}  
-                onClick={() => {
+                checked={todoLists.status === "completed"}
+                onChange={() => {
                   dispatch(putTodoAsync({ id: String(todoLists._id) }));
                 }}
               />
@@ -74,7 +76,7 @@ const TodoLists = () => {
           <p>{todo.length} items left</p>
 
           <div className="middle">
-            <p onClick={() => dispatch(showAll())}>All</p>
+            <p onClick={() => dispatch(fetchTodos())}>All</p>
             <p onClick={() => dispatch(isActive())}>Active</p>
             <p onClick={() => dispatch(isNotActive())}>Completed</p>
           </div>

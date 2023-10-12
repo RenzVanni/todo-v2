@@ -1,23 +1,12 @@
-import { useState } from "react";
 import { useAppDispatch } from "../Dispatch";
 import { useAppSelector } from "../Selector";
 import { onDark } from "../feature/themeSlice";
 
 const Header = () => {
-  const [newTheme, setNewTheme] = useState<boolean>(true);
-  let modeValue: string = newTheme ? "icon-moon.svg" : "icon-sun.svg";
   const theme = useAppSelector((state) => state.theme.theme);
+  let modeValue: string = theme.darkMode ? "icon-moon.svg" : "icon-sun.svg";
 
   const dispatch = useAppDispatch();
-
-  const onNewTheme = () => {
-    setNewTheme((prev) => {
-      return !prev;
-    });
-    dispatch(onDark({ dark: newTheme }));
-    console.log(newTheme);
-    console.log(theme.status);
-  };
 
   return (
     <div className="header">
@@ -27,7 +16,7 @@ const Header = () => {
           src={`../../public/images/${modeValue}`}
           alt=""
           onClick={() => {
-            onNewTheme();
+            dispatch(onDark());
           }}
         />
       </div>
