@@ -27,7 +27,7 @@ const TodoLists = () => {
   const isLoading = useAppSelector((state) => state.todo.isLoading);
 
   const theme = useAppSelector((state) => state.theme.theme);
-  const listDark = theme.status === false ? "list-dark" : "";
+  const listDark = theme.darkMode === false ? "list-dark" : "";
 
   if (isLoading) {
     return (

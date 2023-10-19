@@ -45,7 +45,7 @@ const todoSlice = createSlice({
       state.todo = state.todo.filter((todo) => todo.status === "active");
     },
     isNotActive: (state) => {
-      state.todo = state.todo.filter((todo) => todo.status !== "active");
+      state.todo = state.todo.filter((todo) => todo.status === "completed");
     },
     showAll: (state) => {
       state.todo = state.todo;

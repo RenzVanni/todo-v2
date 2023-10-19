@@ -21,7 +21,7 @@ const CreateTodo = () => {
   };
 
   const theme = useAppSelector((state) => state.theme.theme);
-  const createDark = theme.status === false ? "create-dark" : "";
+  const createDark = theme.darkMode === false ? "create-dark" : "";
 
   return (
     <div className={`createTodo-container ${createDark}`}>

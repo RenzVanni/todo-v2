@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import { useAppSelector } from "./Selector";
 const App = () => {
   const theme = useAppSelector((state) => state.theme.theme);
-  const bgImage = theme.status === false ? "bg-image-dark" : "";
+  const bgImage = theme.darkMode === false ? "bg-image-dark" : "";
 
   return (
     <div className={`todo-container ${bgImage}`}>
