@@ -53,7 +53,7 @@ const TodoLists = () => {
 
               <div className="img-container">
                 <img
-                  src="../../public/static/images/icon-cross.svg"
+                  src="/static/images/icon-cross.svg"
                   alt=""
                   onClick={() =>
                     dispatch(deleteTodoAsync({ id: String(todoLists._id) }))
