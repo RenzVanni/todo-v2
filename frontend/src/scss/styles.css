@@ -41,13 +41,13 @@ body {
   min-width: 300px;
   background-color: var(--light-c2);
   padding: 3rem 1.5rem;
-  background-image: url("../../../public/static/images/bg-mobile-light.jpg");
+  background-image: url("../../../public/static/images/bg-mobile-dark.jpg");
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
 @media (min-width: 375px) {
   .todo-container {
-    background-image: url("../../../public/static/images/bg-desktop-light.jpg");
+    background-image: url("../../../public/static/images/bg-desktop-dark.jpg");
     padding-top: 4rem;
     display: flex;
     flex-direction: column;
