@@ -67,7 +67,7 @@
       }
 
       input[type="checkbox"]:checked + label {
-        background-image: url("../../../public/images/icon-check.svg"),
+        background-image: url("../../../public/static/images/icon-check.svg"),
           linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
         border: none;
       }
