@@ -14,7 +14,7 @@ export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
 
 export const addTodoAsync = createAsyncThunk(
   "todos/addTodoAsync",
-  async ({ _id, text, status }: Todo) => {
+  async ({ text, status }: Todo) => {
     try {
       const response = await axios.post(import.meta.env.VITE_DOMAIN, {
         text,

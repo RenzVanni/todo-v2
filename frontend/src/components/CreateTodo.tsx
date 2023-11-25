@@ -1,4 +1,3 @@
-import { addTodo } from "../feature/todoSlice";
 import { addTodoAsync } from "../feature/todoThunks";
 import { useAppDispatch } from "../Dispatch";
 import { useAppSelector } from "../Selector";
@@ -12,9 +11,9 @@ const CreateTodo = () => {
   const onAddTodo = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let todoLength = todoList.length;
-    dispatch(
-      addTodo({ id: todoLength.toString(), text: inputText, status: "active" })
-    );
+    // dispatch(
+    //   addTodo({ id: todoLength.toString(), text: inputText, status: "active" })
+    // );
     todoLength += 1;
     dispatch(addTodoAsync({ text: inputText, status: "active" }));
     setInputText("");

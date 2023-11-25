@@ -1,4 +1,3 @@
-import React from "react";
 import { useAppSelector } from "../Selector";
 import { useAppDispatch } from "../Dispatch";
 import { showAll, isActive, isNotActive } from "../feature/todoSlice";
