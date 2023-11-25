@@ -1,20 +1,13 @@
 import { useAppSelector } from "../Selector";
 import { useAppDispatch } from "../Dispatch";
-import {
-  deleteTodo,
-  clearTodo,
-  isActive,
-  isNotActive,
-  showAll,
-  changeStatus,
-} from "../feature/todoSlice";
+import { isActive, isNotActive } from "../feature/todoSlice";
 import {
   fetchTodos,
   putTodoAsync,
   deleteTodoAsync,
   clearTodoAsync,
 } from "../feature/todoThunks";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const TodoLists = () => {
   const dispatch = useAppDispatch();

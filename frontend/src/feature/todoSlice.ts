@@ -12,16 +12,16 @@ const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    addTodo: (
-      state,
-      action: PayloadAction<{ id: string; text: string; status: string }>
-    ) => {
-      // state.todo.push({
-      //   id: action.payload.id,
-      //   text: action.payload.text,
-      //   status: action.payload.status,
-      // });
-    },
+    // addTodo: (
+    //   state,
+    //   action: PayloadAction<{ id: string; text: string; status: string }>
+    // ) => {
+    //   // state.todo.push({
+    //   //   id: action.payload.id,
+    //   //   text: action.payload.text,
+    //   //   status: action.payload.status,
+    //   // });
+    // },
     deleteTodo: (state, action: PayloadAction<{ id: string }>) => {
       state.todo = state.todo.filter((todo) => todo._id !== action.payload.id);
     },
@@ -62,7 +62,7 @@ const todoSlice = createSlice({
         state.isLoading = false;
         state.todo = action.payload;
       })
-      .addCase(fetchTodos.rejected, (state) => {
+      .addCase(fetchTodos.rejected, () => {
         console.log("rejected");
       })
       .addCase(addTodoAsync.pending, (state) => {
@@ -74,7 +74,7 @@ const todoSlice = createSlice({
         state.isLoading = false;
         state.todo.push(action.payload);
       })
-      .addCase(addTodoAsync.rejected, (state) => {
+      .addCase(addTodoAsync.rejected, () => {
         console.log("rejected");
       })
       .addCase(putTodoAsync.pending, (state) => {
@@ -93,7 +93,7 @@ const todoSlice = createSlice({
           throw new Error("Put Error");
         }
       })
-      .addCase(putTodoAsync.rejected, (state) => {
+      .addCase(putTodoAsync.rejected, () => {
         console.log("rejected");
       })
       .addCase(deleteTodoAsync.pending, (state) => {
@@ -104,24 +104,24 @@ const todoSlice = createSlice({
         const deleteId = action.payload;
         state.todo = state.todo.filter((todo) => todo._id !== deleteId);
       })
-      .addCase(deleteTodoAsync.rejected, (state) => {
+      .addCase(deleteTodoAsync.rejected, () => {
         console.log("delete todo rejected");
       })
       .addCase(clearTodoAsync.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(clearTodoAsync.fulfilled, (state, action) => {
+      .addCase(clearTodoAsync.fulfilled, (state) => {
         state.isLoading = false;
         state.todo = [];
       })
-      .addCase(clearTodoAsync.rejected, (state) => {
+      .addCase(clearTodoAsync.rejected, () => {
         console.log("delete todo rejected");
       });
   },
 });
 
 export const {
-  addTodo,
+  // addTodo,
   deleteTodo,
   clearTodo,
   isActive,
