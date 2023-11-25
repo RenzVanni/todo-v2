@@ -99,8 +99,13 @@
     padding: 1rem;
 
     .middle {
+      cursor: pointer;
       display: none;
       gap: 1rem;
+    }
+
+    p:nth-child(3) {
+      cursor: pointer;
     }
   }
 

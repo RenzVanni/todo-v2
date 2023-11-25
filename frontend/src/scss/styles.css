@@ -80,6 +80,7 @@ body {
   width: 20px;
 }
 .header .img-container img {
+  cursor: pointer;
   width: inherit;
 }
 .createTodo-container {
@@ -230,8 +231,12 @@ body {
   padding: 1rem;
 }
 .todoLists-container .container-2 .middle {
+  cursor: pointer;
   display: none;
   gap: 1rem;
+}
+.todoLists-container .container-2 p:nth-child(3) {
+  cursor: pointer;
 }
 @media (min-width: 375px) {
   .todoLists-container {
@@ -276,6 +281,9 @@ body {
   padding: 1rem;
   margin-top: 1rem;
   width: clamp(300px, 100%, 500px);
+}
+.footer p {
+  cursor: pointer;
 }
 .footer :nth-child(1) {
   color: var(--primary-c1);

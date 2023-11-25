@@ -11,6 +11,10 @@
   margin-top: 1rem;
   width: clamp(300px, 100%, 500px);
 
+  p {
+    cursor: pointer;
+  }
+
   :nth-child(1) {
     color: var(--primary-c1);
   }
