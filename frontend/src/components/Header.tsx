@@ -13,7 +13,7 @@ const Header = () => {
       <h1>TODO</h1>
       <div className="img-container">
         <img
-          src={`../../public/static/images/${modeValue}`}
+          src={`./../../public/static/images/${modeValue}`}
           alt=""
           onClick={() => {
             dispatch(onDark());
