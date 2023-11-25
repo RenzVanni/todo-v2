@@ -4,7 +4,7 @@ import { Todo } from "./todoTypes";
 
 export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
   try {
-    const response = await axios.get("http://localhost:3000");
+    const response = await axios.get(import.meta.env.VITE_DOMAIN);
     return [...response.data];
   } catch (error) {
     console.log(error);
@@ -16,7 +16,7 @@ export const addTodoAsync = createAsyncThunk(
   "todos/addTodoAsync",
   async ({ _id, text, status }: Todo) => {
     try {
-      const response = await axios.post("http://localhost:3000", {
+      const response = await axios.post(import.meta.env.VITE_DOMAIN, {
         text,
         status,
       });
@@ -31,7 +31,7 @@ export const putTodoAsync = createAsyncThunk(
   "todos/putTodoAsync",
   async ({ id }: { id: string }) => {
     try {
-      const response = await axios.put(`http://localhost:3000/${id}/`);
+      const response = await axios.put(`${import.meta.env.VITE_DOMAIN}/${id}/`);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -43,7 +43,7 @@ export const deleteTodoAsync = createAsyncThunk(
   "todos/deleteTodoAsync",
   async ({ id }: { id: string }) => {
     try {
-      await axios.delete(`http://localhost:3000/${id}`);
+      await axios.delete(`${import.meta.env.VITE_DOMAIN}/${id}`);
       return id;
     } catch (error) {
       console.log(error);
@@ -55,7 +55,7 @@ export const clearTodoAsync = createAsyncThunk(
   "todos/clearTodoAsync",
   async () => {
     try {
-      const response = await axios.delete("http://localhost:3000");
+      const response = await axios.delete(import.meta.env.VITE_DOMAIN);
       return response.data;
     } catch (error) {
       console.log(error);
